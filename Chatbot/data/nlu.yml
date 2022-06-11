@@ -1,8 +1,11 @@
-version: "3.1"
+version: "2.0"
 
 nlu:
+
+# CHÀO
 - intent: greet
   examples: |
+    - xin chào
     - hey
     - hello
     - hi
@@ -16,7 +19,20 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - Chào
+    - Xin hỏi
+    - Chào cửa hàng
+    - Chào shop
+    - Xin chào cửa hàng
+    - Cho tôi đặt pizza
+    - Cho tôi hỏi
+    - Hello shop
+    - hế nhô
+    - anh ơi
+    - chị ơi
+    - shop ơi
 
+# CHÀO TẠM BIỆT
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +45,11 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - tạm biệt
+    - bye shop
+    - cya
 
+# ĐỒNG Ý
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +58,17 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - có
+    - thêm đi
+    - được
+    - được đấy
+    - ok
+    - có ạ
+    - cho thêm đi 
+    - được thôi
+    - duyệt
 
+# TỪ CHỐI
 - intent: deny
   examples: |
     - no
@@ -48,40 +78,118 @@ nlu:
     - don't like that
     - no way
     - not really
+    - nah
+    - thôi
+    - không
+    - không cần đâu
+    - chắc khỏi
+    - khỏi
+    - thôi không cần đâu
+    - chẳng cần
+    - bỏ qua
+    - bỏ
+    - thôi khỏi
+    - chả cần
+    - nope
+    - thôi bỏ đi
+    - bỏ đi
+    - không cần đâu ạ
+    - ko
 
-- intent: mood_great
+# LÁY MENU
+- intent: get_pizza_menu
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - Cho mình hỏi có những loại pizza nào
+    - Cho mình hỏi 
+    - có những loại pizza gì vậy ạ
+    - cho xin danh sách những pizza cửa hàng có
+    - Lựa chọn
+    - Menu
+    - Liệu tôi có thể hỏi có những loại pizza nào 
+    - có những loại pizza nào vậy ?
+    - cho hỏi cửa hàng có những loại pizza nào 
+    - Menu pizza
+    - thực đơn
+    - mình có thể xem thực đơn được không ?
+    - cho xem thực đơn
+    - cho mình xin menu
 
-- intent: mood_unhappy
+# CHỌN PIZZA
+- intent: choose_pizza_type
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - Cho mình chọn loại pizza [hải sản](pizza_type)
+    - chọn loại pizza [gà](pizza_type)
+    - mình chọn loại pizza [heo](pizza_type)
+    - lấy loại pizza [bò](pizza_type)
+    - chọn loại pizza (ăn chay)[pizza_type]
+
+- intent: choose_pizza
+  examples: |
+    - Mình chọn pizza này [pizza bò hải sản](pizza)
+    - Chọn pizza [bò](pizza)
+
+# LẤY TÊN NGƯỜI DÙNG
+- intent: user_give_name_info
+  examples: |
+    - Hi my name is [John](customer_name)
+    - Nice to meet you I'm [Tom](customer_name)
+    - Hi how are you I'm [Connor](customer_name)
+    - The name is [Susan](customer_name)
+    - Remeber my name it's [Timothy](customer_name)
+    - tôi tên là [Trung](customer_name)
+    - [Thiện](customer_name)
+    - tên là [Tiến](customer_name)
+    - tên mình là [Khoa](customer_name)
+
+# TOPPING
+- intent: ask_for_topping
+  examples: |
+   - cho hỏi có những loại topping nào ?
+   - cho mình xin danh sách các loại toppings cửa hàng có
+   - topping ?
+   - mình muốn thêm topping cho pizza cho mình hỏi có những topping nào ?
+   - tôi muốn thêm topping cho pizza cho tôi hỏi có những topping nào ?
+   - list topping
+   - có những loại topping nào ?
+
+
+- intent: choose_topping
+  examples: |
+    - chọn topping [peperoni](topping)
+    - The topping I want is [Black olives](topping)
+    - Add some [Onion](topping)
+    - Cho thêm topping [hành](topping)
+
+
+# PIZZA SIZE
+- intent: choose_pizza_size
+  examples: |
+    - mình muốn chọn size [lớn](pizza_size)
+    - cho lấy cỡ [vừa](pizza_size)
+
+- intent: ask_pizza_size
+  examples: |
+    - cửa hàng có thể cho mình size của pizza được không vậy ?
+    - cho xem size của pizza
+    - size pizza
+    - size của pizza là gì vậy cửa hàng ?
+    - anh ơi cho em xem size pizza ?
+    - chị ơi cho em xem size pizza ?
+    - size của pizza có những loại nào ?
+    - pizza có những kích cỡ như thế nào vậy ạ ?
+
+
+# DRINK
+- intent: choose_drink
+  examples: |
+    - cho mình lấy [COCA COLA](drink)
+    - lấy nước uống [SPRITE](drink)
+- intent: ask_for_drink
+  examples: |
+    - cho mình xin danh sách đồ uống
+    - drink
+    - cho xem đồ uống
+    - cho hỏi có những loại đồ uống nào ?
 
 - intent: bot_challenge
   examples: |
@@ -89,3 +197,9 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: fill_information
+  examples: |
+    - info
+    - infor
+    - in4

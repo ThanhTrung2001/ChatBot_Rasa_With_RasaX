@@ -1,30 +1,70 @@
-version: "3.1"
+version: "2.0"
 
 stories:
 
-- story: happy path
+- story: greet and buy pizza
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: action_show_pizza_types
+  - intent: choose_pizza_type
+  - action: action_show_pizza_from_type
+  - intent: choose_pizza
+  - action: action_show_pizza_size
+  - intent: choose_pizza_size
+  - action: utter_ask_if_want_topping
+  - checkpoint: check_asked_if_want_topping
 
-- story: sad path 1
+- story: user affirm for topping
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+  - checkpoint: check_asked_if_want_topping
   - intent: affirm
-  - action: utter_happy
+  - action: action_show_pizza_toppings
+  - intent: choose_topping
+  - action: utter_pizza_info
 
-- story: sad path 2
+- story: user deny topping
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+  - checkpoint: check_asked_if_want_topping
   - intent: deny
-  - action: utter_goodbye
+  - action: utter_pizza_info
+  
+- story: user ask for drink
+  steps:
+  - intent: ask_for_drink
+  - action: action_show_drink_options
+
+- story: ask user information
+  steps:
+  - intent: fill_information
+  - action: utter_ask_customer_name
+  - action: customer_name_form
+  - active_loop: customer_name_form
+  - slot_was_set: 
+    - requested_slot: cus_name
+  - slot_was_set: 
+    - requested_slot: trung
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_customer_phonenumber
+  - action: customer_phone_form
+  - active_loop: customer_phone_form
+  - slot_was_set: 
+    - requested_slot: cus_phone
+  - slot_was_set: 
+    - requested_slot: 0123456789
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_customer_address
+  - action: customer_address_form
+  - active_loop: customer_address_form
+  - slot_was_set: 
+    - requested_slot: cus_address
+  - slot_was_set: 
+    - requested_slot: 12 quan7 hcm
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_review

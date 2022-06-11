@@ -1,0 +1,25 @@
+nlu:
+- lookup: topping
+  examples: |
+    - Xúc xích hun khói
+    - Nấm
+    - Thêm phô mai
+    - Lạp xưởng
+    - Hành
+    - Ô liu đen
+    - Ớt xanh
+    - Tỏi tươi
+    - Cà chua
+    - Húng quế 
+- lookup: pizza_type
+  examples: |
+      - bò
+      - gà
+      - hải sản
+      - heo
+      - ăn chay
+- lookup: pizza_size
+  examples: |
+      - cỡ nhỏ
+      - cỡ vừa
+      - cỡ lớn

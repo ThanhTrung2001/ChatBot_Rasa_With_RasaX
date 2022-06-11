@@ -1,4 +1,4 @@
-version: "3.1"
+version: "2.0"
 
 rules:
 
@@ -11,3 +11,50 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+# - rule: user info taken name
+#   steps:
+#   - intent: user_give_name_info
+#   - action: utter_user_name
+
+
+- rule: show drink 
+  steps:
+  - intent: choose_drink
+  - action: utter_pizza_info
+
+# - rule: ask pizza size
+#   steps:
+#   - intent: ask_pizza_size
+#   - action: action_show_pizza_size
+# - rule: get pizza size
+#   steps: 
+#   - intent: choose_pizza_size
+#   - action: utter_pizza_size
+# - rule: ask if want topping
+#   steps:
+#   - intent: choose_pizza
+#   - action: utter_ask_if_want_topping
+# - rule: test show topping
+
+#   steps:
+#   - intent: ask_for_topping
+#   - action: action_show_pizza_toppings
+# - rule: test topping choose_topping
+#   steps:
+#   - intent: choose_topping
+#   - action: utter_topping
+
+# - rule: show pizza options
+#   steps:
+#   - intent: get_pizza_menu
+#   - action: action_show_pizza_types
+# - rule: display chosen pizza type
+#   steps:
+#   - intent: choose_pizza_type
+#   - action: utter_pizza_type
+#   - action: action_show_pizza_from_type  
+# - rule: display chosen pizza
+#   steps:
+#   - intent: choose_pizza
+#   - action: utter_pizza

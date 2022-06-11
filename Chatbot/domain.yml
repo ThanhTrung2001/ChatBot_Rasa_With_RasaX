@@ -1,34 +1,180 @@
-version: "3.1"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- user_give_name_info:
+    use_entities: true
+- choose_topping:
+    use_entities: true
+- get_pizza_menu:
+    use_entities: true
+- choose_pizza_type:
+    use_entities: true
+- choose_pizza:
+    use_entities: true
+- ask_for_topping:
+    use_entities: true
+- choose_pizza_size:
+    use_entities: true
+- ask_pizza_size:
+    use_entities: true
+- choose_drink:
+    use_entities: true
+- ask_for_drink:
+    use_entities: true
+- fill_information:
+    use_entities: true
+entities:
+- address
+- drink
+- pizza_type
+- customer_name
+- topping
+- pizza_size
+- pizza
+slots:
+  customer_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  topping:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  pizza_type:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  pizza:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  pizza_size:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  drink:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  cus_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  cus_phone:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  cus_address:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Chào mừng bạn đến cửa hàng pizza RCB
+  - text: Chào bạn
+  utter_goodbye:
+  - text: Cảm ơn bạn đã sư dụng dịch vụ của cửa hàng
+  utter_pizza_type:
+  - text: 'your chosen pizza type: {pizza_type}'
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_promotion:
+  - text: promotion
+  utter_sorry:
+  - text: Xin lỗi bạn có thể nhắn lại được không
+  utter_happy:
+  - text: why you make me utter happy man
+  utter_user_name:
+  - text: hello {customer_name} thank you for providing your info
+  utter_topping:
+  - text: the topping you have chosen is {topping}
+  utter_pizza:
+  - text: pizza bạn đã chọn là {pizza}
+  utter_ask_if_want_topping:
+  - text: bạn có muốn thêm topping cho pizza của mình không ?
+  - text: bạn có thể thêm topping cho pizza của mình đấy bạn có muốn thêm không ?
+  utter_pizza_info:
+  - text: |-
+      loại pizza {pizza_type} 
+      pizza: {pizza} 
+      kích cỡ: {pizza_size} 
+      topping: {topping} 
+       đồ uống: {drink}
+  utter_pizza_size:
+  - text: pizza size {pizza_size}
+  utter_ask_customer_name:
+  - text: Tên người nhận hàng là?
+  utter_ask_customer_phonenumber:
+  - text: Số điện thoại của người nhận hàng là?
+  utter_ask_customer_address:
+  - text: Địa chỉ nhận hàng là?
+  utter_review:
+  - buttons:
+    - payload: Xác nhận là có
+      title: Xác nhận là có
+    - payload: Xác nhận là không
+      title: Xác nhận là không
+    text: |-
+      Đây có phải thông tin chính xác chưa?
+      Tên: {cus_name}
+      Số điện thoại: {cus_phone}
+      Địa chỉ: {cus_address} 
+actions:
+- action_show_pizza_types
+- action_show_pizza_from_type
+- action_show_pizza_toppings
+- action_show_pizza_size
+- action_show_drink_options
+- utter_ask_customer_name
+- utter_ask_customer_phonenumber
+- utter_ask_customer_address
+- utter_review
+- validate_customer_name_form
+- validate_customer_phone_form
+- validate_customer_address_form
+forms:
+  customer_name_form:
+    required_slots:
+      cus_name:
+      - type: from_text
+  customer_phone_form:
+    required_slots:
+      cus_phone:
+      - type: from_text
+  customer_address_form:
+    required_slots:
+      cus_address:
+      - type: from_text
+e2e_actions: []

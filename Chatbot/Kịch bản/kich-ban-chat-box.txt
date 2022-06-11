@@ -1,0 +1,65 @@
+ Kịch bản chat bot:
+ 
+User : bắt đầu 
+Bot : 
+	1.Đặt pizza
+	2.Xem chương trình khuyến mãi
+	3.Xem thông tin cửa hang
+	4.Chăm sóc khách hàng
+	5.kết thúc 
+****************************
+Th user chọn 1:
+user: 1 
+(1)bot: bạn muốn loại pizza nào( show data về các loại pizza)
+user: chọn pizza 
+bot : vui lòng chọn size và số lượng 
+user: chọn size và số lượng
+bot : bạn có muốn thêm topping gì không( show các loại topping )
+user: chọn topping
+bot : bạn có muốn chon đồ uống không ( show đồ uống)
+user: chon đò uống 
+bot : bạn có yêu cầu gì kèm theo không
+user: nhập yêu cầu thêm
+bot : vui lòng xem và xác nhận đơn hàng(show đơn hàng )
+	1. chỉnh sửa 
+	2.xác nhận 
+user: chọn 1 (quay lại (1))
+      chọn 2( tiếp tục)
+bot : vui lòng nhập sdt
+user: nhâp sdt
+bot : vui lòng nhập địa chỉ
+user: nhập địa chỉ
+bot : vui lòng chọn pt thanh toán
+	1.thanh toán online
+	2.thanh toán khi nhân hàng
+user: chon 1 (đi tới trang thanh toán online)	
+      chon 2 (tiếp tục)
+bot : đơn hàng của quý khách đã được xác nhân, cửa hàng sẽ giao trong thời gian sắp tới, bạn có muốn làm gì tiếp không?
+	Show cái menu ban đầu 
+*************************************************
+
+th user chọn 2:
+user: 2
+bot : đây là các chương trình khuyến mãi hiện có của cửa hàng(show các ctkm hiện có) 
+      bạn có muốn làm gì tiếp theo ( show menu lựa chon ban đầu)
+
+
+****************************************************
+th user chọn 3:
+user: 3
+bot : show thông tin cửa hang ( địa chỉ,sdt đặt hang, link trang web)
+      bạn có muốn làm gì tiếp theo ( show menu lựa chon ban đầu)
+
+
+****************************************************
+th user chon 4:
+user: 4
+bot : chào bạn, bạn có khiếu nại gì về cửa hàng của chúng tôi xin vui lòng liên hệ sdt xxxxxxxxxxxx, cám ơn quý khách đã sử dụng dịch vụ của chúng tôi
+      bạn có muốn làm gì tiếp theo ( show menu lựa chon ban đầu)
+
+
+***************************************************
+th user chon 5:
+
+kết thúc cuộc trò chuyện
+
