@@ -141,6 +141,16 @@ nlu:
     - tên là [Tiến](customer_name)
     - tên mình là [Khoa](customer_name)
 
+- intent: user_give_phone_info
+  examples: |
+    - My phone number is [0989898989](customer_phone)
+    - [0989898989](customer_phone)
+
+- intent: user_give_address_info
+  examples: |
+    - My address is [Hanoi](customer_address)
+    - [Hanoi](customer_address)
+
 # TOPPING
 - intent: ask_for_topping
   examples: |
@@ -203,3 +213,8 @@ nlu:
     - info
     - infor
     - in4
+
+- intent: review_customer
+  examples: |
+    - checkin4
+    - checkinfo

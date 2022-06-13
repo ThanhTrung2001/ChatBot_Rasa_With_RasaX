@@ -21,6 +21,10 @@ intents:
     use_entities: true
 - user_give_name_info:
     use_entities: true
+- user_give_phone_info:
+    use_entities: true
+- user_give_address_info:
+    use_entities: true
 - choose_topping:
     use_entities: true
 - get_pizza_menu:
@@ -41,20 +45,19 @@ intents:
     use_entities: true
 - fill_information:
     use_entities: true
+- review_customer:
+    use_entities: true
 entities:
 - address
 - drink
 - pizza_type
 - customer_name
+- customer_phone
+- customer_address
 - topping
 - pizza_size
 - pizza
 slots:
-  customer_name:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
   topping:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
@@ -80,17 +83,22 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  cus_name:
+  # cus_name:
+  #   type: rasa.shared.core.slots.TextSlot
+  #   initial_value: null
+  #   auto_fill: true
+  #   influence_conversation: true
+  customer_name:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  cus_phone:
+  customer_phone:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  cus_address:
+  customer_address:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
@@ -148,9 +156,9 @@ responses:
       title: Xác nhận là không
     text: |-
       Đây có phải thông tin chính xác chưa?
-      Tên: {cus_name}
-      Số điện thoại: {cus_phone}
-      Địa chỉ: {cus_address} 
+      Tên: {customer_name}
+      Số điện thoại: {customer_phone}
+      Địa chỉ: {customer_address} 
 actions:
 - action_show_pizza_types
 - action_show_pizza_from_type
@@ -161,20 +169,14 @@ actions:
 - utter_ask_customer_phonenumber
 - utter_ask_customer_address
 - utter_review
-- validate_customer_name_form
-- validate_customer_phone_form
-- validate_customer_address_form
+- validate_customer_form
 forms:
-  customer_name_form:
+  customer_info_form:
     required_slots:
-      cus_name:
+      customer_name:
       - type: from_text
-  customer_phone_form:
-    required_slots:
-      cus_phone:
+      customer_phone:
       - type: from_text
-  customer_address_form:
-    required_slots:
-      cus_address:
+      customer_address:
       - type: from_text
 e2e_actions: []
