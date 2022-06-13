@@ -34,37 +34,55 @@ stories:
   - intent: ask_for_drink
   - action: action_show_drink_options
 
+- story: user ask for check information
+  steps:
+  - intent: review_customer
+  - action: utter_review
+
 - story: ask user information
   steps:
   - intent: fill_information
-  - action: utter_ask_customer_name
-  - action: customer_name_form
-  - active_loop: customer_name_form
+  - action: customer_info_form
+  - active_loop: customer_info_form
+  - action: utter_ask_customer_name # ask for name
+  # - intent: user_give_name_info
   - slot_was_set: 
-    - requested_slot: cus_name
+    - requested_slot: customer_name
   - slot_was_set: 
-    - requested_slot: trung
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_ask_customer_phonenumber
-  - action: customer_phone_form
-  - active_loop: customer_phone_form
+    - customer_name: trung
+  - action: utter_ask_customer_phonenumber # ask for phone number
+  - intent: user_give_phone_info
   - slot_was_set: 
-    - requested_slot: cus_phone
+    - requested_slot: customer_phone
   - slot_was_set: 
-    - requested_slot: 0123456789
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_ask_customer_address
-  - action: customer_address_form
-  - active_loop: customer_address_form
+    - customer_phone: 0123456789
+  - action: utter_ask_customer_address # ask for address
+  - intent: user_give_address_info
   - slot_was_set: 
-    - requested_slot: cus_address
+    - requested_slot: customer_address
   - slot_was_set: 
-    - requested_slot: 12 quan7 hcm
+    - customer_address: Quan1 TPHCM
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
   - action: utter_review
+  # - action: utter_ask_customer_phonenumber
+  # - action: customer_phone_form
+  # - active_loop: customer_phone_form
+  # - slot_was_set: 
+  #   - requested_slot: customer_phone
+  # - slot_was_set: 
+  #   - requested_slot: 0123456789
+  # - slot_was_set:
+  #   - requested_slot: null
+  # - active_loop: null
+  # - action: utter_ask_customer_address
+  # - action: customer_address_form
+  # - active_loop: customer_address_form
+  # - slot_was_set: 
+  #   - requested_slot: customer_address
+  # - slot_was_set: 
+  #   - requested_slot: 12 quan7 hcm
+  # - slot_was_set:
+  #   - requested_slot: null
+  # - active_loop: null
