@@ -45,27 +45,24 @@ stories:
   - action: customer_info_form
   - active_loop: customer_info_form
   - action: utter_ask_customer_name # ask for name
-  # - intent: user_give_name_info
-  - slot_was_set: 
-    - requested_slot: customer_name
-  - slot_was_set: 
-    - customer_name: trung
+  - intent: user_give_name_info
+  - action: action_customer_name_in_form
   - action: utter_ask_customer_phonenumber # ask for phone number
   - intent: user_give_phone_info
-  - slot_was_set: 
-    - requested_slot: customer_phone
-  - slot_was_set: 
-    - customer_phone: 0123456789
+  - action: action_customer_phone_in_form
   - action: utter_ask_customer_address # ask for address
   - intent: user_give_address_info
   - slot_was_set: 
     - requested_slot: customer_address
-  - slot_was_set: 
-    - customer_address: Quan1 TPHCM
+  - slot_was_set:
+    - customer_address: Quận Bình Thạnh
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
   - action: utter_review
+
+
+
   # - action: utter_ask_customer_phonenumber
   # - action: customer_phone_form
   # - active_loop: customer_phone_form

@@ -12,19 +12,14 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-# - rule: user info taken name
-#   steps:
-#   - intent: user_give_name_info
-#   - action: utter_user_name
-
 - rule: submit customer info
   condition:
   - active_loop: customer_info_form
   steps:
   - action: customer_info_form
-  - active_loop: null
   - slot_was_set: 
     - requested_slot: null
+  - active_loop: null
   - action: utter_review
 
 - rule: view customer info

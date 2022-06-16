@@ -169,14 +169,20 @@ actions:
 - utter_ask_customer_phonenumber
 - utter_ask_customer_address
 - utter_review
-- validate_customer_form
+- action_customer_name_in_form
+- action_customer_phone_in_form
+- validate_customer_address_form
+# - action_customer_address_in_form
+# - validate_customer_form
 forms:
   customer_info_form:
     required_slots:
       customer_name:
-      - type: from_text
+      - type: from_entity
+        entity: customer_name
       customer_phone:
-      - type: from_text
+      - type: from_entity
+        entity: customer_phone
       customer_address:
       - type: from_text
 e2e_actions: []

@@ -128,6 +128,12 @@ nlu:
     - Mình chọn pizza này [pizza bò hải sản](pizza)
     - Chọn pizza [bò](pizza)
 
+#HIỂN THỊ ẢNH VÀ MÔ TẢ PIZZA
+- intent: show_pizza_description
+  examples: |
+    - Xem thông tin pizza [pizza bò hải sản](pizza)
+
+
 # LẤY TÊN NGƯỜI DÙNG
 - intent: user_give_name_info
   examples: |
