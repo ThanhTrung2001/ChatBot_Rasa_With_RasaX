@@ -83,11 +83,6 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  # cus_name:
-  #   type: rasa.shared.core.slots.TextSlot
-  #   initial_value: null
-  #   auto_fill: true
-  #   influence_conversation: true
   customer_name:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
@@ -136,7 +131,7 @@ responses:
   utter_pizza_info:
   - text: |-
       loại pizza {pizza_type} 
-      pizza: {pizza} 
+      pizza: {pizza}
       kích cỡ: {pizza_size} 
       topping: {topping} 
        đồ uống: {drink}
@@ -162,6 +157,7 @@ responses:
 actions:
 - action_show_pizza_types
 - action_show_pizza_from_type
+- action_show_pizza_detail
 - action_show_pizza_toppings
 - action_show_pizza_size
 - action_show_drink_options
@@ -174,9 +170,12 @@ forms:
   customer_info_form:
     required_slots:
       customer_name:
-      - type: from_text
+      - type: from_entity
+        entity: customer_name
       customer_phone:
-      - type: from_text
+      - type: from_entity
+        entity: customer_phone
       customer_address:
-      - type: from_text
+      - type: from_entity
+        entity: customer_address
 e2e_actions: []

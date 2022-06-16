@@ -8,6 +8,7 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List
+from matplotlib import image
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -59,7 +60,22 @@ class ActionShowPizzaFromType(Action):
                 break
         dispatcher.utter_message(text='các loại pizza {}:'.format(slot_pizza_type), buttons = buttons)
         return[]
-        
+
+class ActionShowPizzaDetail(Action):
+    def name(self) -> Text:
+        return "action_show_pizza_detail"
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        slot_pizza_type = tracker.get_slot('pizza_type')
+        for pizza in pizza_data['Menu']:
+            if pizza['type'] == slot_pizza_type: 
+                for p in pizza['pizza']: 
+                    if p['name'] == tracker.get_slot('pizza'):
+                            dispatcher.utter_message(image='{}'.format(p['image']))
+                            dispatcher.utter_message(text='Mô tả: {}'.format(p['description']))
+                            dispatcher.utter_message(text='Giá tiền: {}'.format(p['price']))
+                            return[]
+
+
 class ActionShowPizzaTopping(Action):
     def name(self) -> Text:
         return "action_show_pizza_toppings"
@@ -157,27 +173,69 @@ class ValidateCustomerForm(FormValidationAction):
 #     def name(self) -> Text:
 #         return "validate_customer_phone_form"
 
-#     def validate_customer_phone(
-#         self,
-#         slot_value: Any,
-#         dispatcher: CollectingDispatcher,
-#         tracker: Tracker,
-#         domain: DomainDict,
-#     ) -> Dict[Text, Any]:
-#         """Kiểm tra `customer_phone` ."""
-
-#         # If the name is super short, it might be wrong.
-#         print(f"SDT = {slot_value} độ dài = {len(slot_value)}")
-#         if len(slot_value) <= 2:
-#             dispatcher.utter_message(text=f"Mời nhập lại.")
-#             return {"customer_phone": None}
-#         else:
-#             return {"customer_phone": slot_value}
-
 # #validate address
 # class ValidateAddressForm(FormValidationAction):
 #     def name(self) -> Text:
 #         return "validate_customer_address_form"
 
-    
+#GetName
+class ActionGetName(Action):
+    """Processes Delivery Form"""
+
+    def name(self) -> Text:
+        """Unique identifier of the action"""
+        return "action_customer_name_in_form"
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Executes the action"""
+        cus_name = tracker.get_slot("customer_name")
+        dispatcher.utter_message(f"Order placed for {cus_name}")
+        return [SlotSet("customer_name", cus_name)]
+
+#Get PhoneNumber
+class ActionGetPhone(Action):
+    """Processes Delivery Form"""
+
+    def name(self) -> Text:
+        """Unique identifier of the action"""
+        return "action_customer_phone_in_form"
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Executes the action"""
+        cus_phone = tracker.get_slot("customer_phone")
+        dispatcher.utter_message(f"Order placed for {cus_phone}")
+        return [SlotSet("customer_phone", cus_phone)]
+
+
+
+#validate address
+class ValidateAddressForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_customer_address_form"
+    def validate_customer_address(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+        ) -> Dict[Text, Any]:
+            """Kiểm tra `customer_address` ."""
+
+            # If the name is super short, it might be wrong.
+            print(f"Địa chỉ = {slot_value} độ dài = {len(slot_value)}")
+            if len(slot_value) <= 2:
+                dispatcher.utter_message(text=f"Mời nhập lại.")
+                return {"customer_address": None}
+            else:
+                return {"customer_address": slot_value}    
 
