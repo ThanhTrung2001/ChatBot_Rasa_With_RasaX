@@ -70,11 +70,20 @@ class ActionShowPizzaDetail(Action):
             if pizza['type'] == slot_pizza_type: 
                 for p in pizza['pizza']: 
                     if p['name'] == tracker.get_slot('pizza'):
-                            dispatcher.utter_message(image='{}'.format(p['image']))
-                            dispatcher.utter_message(text='Mô tả: {}'.format(p['description']))
-                            dispatcher.utter_message(text='Giá tiền: {}'.format(p['price']))
+                            dispatcher.utter_message(text='Mô tả: {}'.format(p['description']), image='{}'.format(p['image']))
                             return[]
 
+class ActionShowPizzaDetail(Action):
+    def name(self) -> Text:
+        return "action_show_pizza_price"
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        slot_pizza_type = tracker.get_slot('pizza_type')
+        for pizza in pizza_data['Menu']:
+            if pizza['type'] == slot_pizza_type: 
+                for p in pizza['pizza']: 
+                    if p['name'] == tracker.get_slot('pizza'):
+                            dispatcher.utter_message(text='Giá tiền: {}'.format(p['price']))
+                            return[]
 
 class ActionShowPizzaTopping(Action):
     def name(self) -> Text:
@@ -112,61 +121,61 @@ class ActionShowDrinkOptions(Action):
         dispatcher.utter_message(text='danh sách đồ uống', buttons = buttons)
         return []
 
-#validate name
-class ValidateCustomerForm(FormValidationAction):
-    def name(self) -> Text:
-        return "validate_customer_form"
+# #validate name
+# class ValidateCustomerForm(FormValidationAction):
+#     def name(self) -> Text:
+#         return "validate_customer_form"
 
-    def validate_customer_name(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Kiểm tra `customer_name` ."""
+#     def validate_customer_name(
+#         self,
+#         slot_value: Any,
+#         dispatcher: CollectingDispatcher,
+#         tracker: Tracker,
+#         domain: DomainDict,
+#     ) -> Dict[Text, Any]:
+#         """Kiểm tra `customer_name` ."""
 
-        # If the name is super short, it might be wrong.
-        print(f"Tên được nhập vào = {slot_value} độ dài = {len(slot_value)}")
-        if len(slot_value) <= 2:
-            dispatcher.utter_message(text=f"Mời nhập lại.")
-            return {"customer_name": None}
-        else:
-            return {"customer_name": slot_value}
+#         # If the name is super short, it might be wrong.
+#         print(f"Tên được nhập vào = {slot_value} độ dài = {len(slot_value)}")
+#         if len(slot_value) <= 2:
+#             dispatcher.utter_message(text=f"Mời nhập lại.")
+#             return {"customer_name": None}
+#         else:
+#             return {"customer_name": slot_value}
     
-    def validate_customer_phone(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Kiểm tra `customer_phone` ."""
+#     def validate_customer_phone(
+#         self,
+#         slot_value: Any,
+#         dispatcher: CollectingDispatcher,
+#         tracker: Tracker,
+#         domain: DomainDict,
+#     ) -> Dict[Text, Any]:
+#         """Kiểm tra `customer_phone` ."""
 
-        # If the name is super short, it might be wrong.
-        print(f"SDT = {slot_value} độ dài = {len(slot_value)}")
-        if len(slot_value) <= 2:
-            dispatcher.utter_message(text=f"Mời nhập lại.")
-            return {"customer_phone": None}
-        else:
-            return {"customer_phone": slot_value}
+#         # If the name is super short, it might be wrong.
+#         print(f"SDT = {slot_value} độ dài = {len(slot_value)}")
+#         if len(slot_value) <= 2:
+#             dispatcher.utter_message(text=f"Mời nhập lại.")
+#             return {"customer_phone": None}
+#         else:
+#             return {"customer_phone": slot_value}
     
-    def validate_customer_address(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Kiểm tra `customer_address` ."""
+#     def validate_customer_address(
+#         self,
+#         slot_value: Any,
+#         dispatcher: CollectingDispatcher,
+#         tracker: Tracker,
+#         domain: DomainDict,
+#     ) -> Dict[Text, Any]:
+#         """Kiểm tra `customer_address` ."""
 
-        # If the name is super short, it might be wrong.
-        print(f"Địa chỉ = {slot_value} độ dài = {len(slot_value)}")
-        if len(slot_value) <= 2:
-            dispatcher.utter_message(text=f"Mời nhập lại.")
-            return {"customer_address": None}
-        else:
-            return {"customer_address": slot_value}
+#         # If the name is super short, it might be wrong.
+#         print(f"Địa chỉ = {slot_value} độ dài = {len(slot_value)}")
+#         if len(slot_value) <= 2:
+#             dispatcher.utter_message(text=f"Mời nhập lại.")
+#             return {"customer_address": None}
+#         else:
+#             return {"customer_address": slot_value}
 
 # #validate phone
 # class ValidatePhoneForm(FormValidationAction):

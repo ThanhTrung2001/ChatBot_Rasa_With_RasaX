@@ -11,6 +11,7 @@ stories:
   - action: action_show_pizza_from_type
   - intent: choose_pizza
   - action: action_show_pizza_detail
+  - action: action_show_pizza_price
   - action: action_show_pizza_size
   - intent: choose_pizza_size
   - action: utter_ask_if_want_topping
@@ -45,25 +46,27 @@ stories:
   - intent: fill_information
   - action: customer_info_form
   - active_loop: customer_info_form
-  - slot_was_set: 
-    - customer_name: trung
-  - action: utter_ask_customer_name # ask for name
-  - intent: user_give_name_info
-  - slot_was_set: 
-    - requested_slot: customer_name
-  - slot_was_set: 
-    - customer_phone: 0123456789
-  - action: utter_ask_customer_phonenumber # ask for phone number
-  - intent: user_give_phone_info
-  - slot_was_set: 
-    - requested_slot: customer_phone
-  - slot_was_set: 
-    - customer_address: Quan1 TPHCM
   - action: utter_ask_customer_address # ask for address
   - intent: user_give_address_info
   - slot_was_set: 
     - requested_slot: customer_address
-  - slot_was_set:
+  - slot_was_set: 
+    - customer_address: Quan1 TPHCM
+  - action: utter_ask_customer_name # ask for name
+  # - intent: user_give_name_info
+  # - action: action_customer_name_in_form
+  - slot_was_set: 
+    - requested_slot: customer_name
+  - slot_was_set: 
+    - customer_name: trung
+  - action: utter_ask_customer_phonenumber # ask for phone number
+  # - intent: user_give_phone_info
+  # - action: action_customer_phone_in_form
+  - slot_was_set: 
+    - requested_slot: customer_phone
+  - slot_was_set: 
+    - customer_phone: 0987345621
+  - slot_was_set: 
     - requested_slot: null
   - active_loop: null
   - action: utter_review
