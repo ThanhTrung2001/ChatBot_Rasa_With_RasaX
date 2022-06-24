@@ -1,8 +1,5 @@
 version: "2.0"
-
 nlu:
-
-# CHÀO
 - intent: greet
   examples: |
     - xin chào
@@ -31,8 +28,6 @@ nlu:
     - anh ơi
     - chị ơi
     - shop ơi
-
-# CHÀO TẠM BIỆT
 - intent: goodbye
   examples: |
     - cu
@@ -48,8 +43,6 @@ nlu:
     - tạm biệt
     - bye shop
     - cya
-
-# ĐỒNG Ý
 - intent: affirm
   examples: |
     - yes
@@ -64,11 +57,10 @@ nlu:
     - được đấy
     - ok
     - có ạ
-    - cho thêm đi 
+    - cho thêm đi
     - được thôi
     - duyệt
-
-# TỪ CHỐI
+    - ta
 - intent: deny
   examples: |
     - no
@@ -95,26 +87,23 @@ nlu:
     - bỏ đi
     - không cần đâu ạ
     - ko
-
-# LÁY MENU
+    - ngọc
 - intent: get_pizza_menu
   examples: |
     - Cho mình hỏi có những loại pizza nào
-    - Cho mình hỏi 
+    - Cho mình hỏi
     - có những loại pizza gì vậy ạ
     - cho xin danh sách những pizza cửa hàng có
     - Lựa chọn
     - Menu
-    - Liệu tôi có thể hỏi có những loại pizza nào 
+    - Liệu tôi có thể hỏi có những loại pizza nào
     - có những loại pizza nào vậy ?
-    - cho hỏi cửa hàng có những loại pizza nào 
+    - cho hỏi cửa hàng có những loại pizza nào
     - Menu pizza
     - thực đơn
     - mình có thể xem thực đơn được không ?
     - cho xem thực đơn
     - cho mình xin menu
-
-# CHỌN PIZZA
 - intent: choose_pizza_type
   examples: |
     - Cho mình chọn loại pizza [hải sản](pizza_type)
@@ -122,61 +111,31 @@ nlu:
     - mình chọn loại pizza [heo](pizza_type)
     - lấy loại pizza [bò](pizza_type)
     - chọn loại pizza (ăn chay)[pizza_type]
-
+    - /choose_pizza_type{"pizza_type": "hải sản"}
+    - phú nhuận 2
 - intent: choose_pizza
   examples: |
     - Mình chọn pizza này [pizza bò hải sản](pizza)
     - Chọn pizza [bò](pizza)
-
-# LẤY TÊN NGƯỜI DÙNG
-- intent: user_give_name_info
-  examples: |
-    - Hi my name is [John](customer_name)
-    - Nice to meet you I'm [Tom](customer_name)
-    - Hi how are you I'm [Connor](customer_name)
-    - The name is [Susan](customer_name)
-    - Remeber my name it's [Timothy](customer_name)
-    - tôi tên là [Trung](customer_name)
-    - [Thiện](customer_name)
-    - tên là [Tiến](customer_name)
-    - tên mình là [Khoa](customer_name)
-
-- intent: user_give_phone_info
-  examples: |
-    - My phone number is [0989898989](customer_phone)
-    - [0989898989](customer_phone)
-
-- intent: user_give_address_info
-  examples: |
-    - My address is [Hanoi](customer_address)
-    - [Hanoi](customer_address)
-
-# TOPPING
 - intent: ask_for_topping
   examples: |
-   - cho hỏi có những loại topping nào ?
-   - cho mình xin danh sách các loại toppings cửa hàng có
-   - topping ?
-   - mình muốn thêm topping cho pizza cho mình hỏi có những topping nào ?
-   - tôi muốn thêm topping cho pizza cho tôi hỏi có những topping nào ?
-   - list topping
-   - có những loại topping nào ?
-
-
+    - cho hỏi có những loại topping nào ?
+    - cho mình xin danh sách các loại toppings cửa hàng có
+    - topping ?
+    - mình muốn thêm topping cho pizza cho mình hỏi có những topping nào ?
+    - tôi muốn thêm topping cho pizza cho tôi hỏi có những topping nào ?
+    - list topping
+    - có những loại topping nào ?
 - intent: choose_topping
   examples: |
     - chọn topping [peperoni](topping)
     - The topping I want is [Black olives](topping)
     - Add some [Onion](topping)
     - Cho thêm topping [hành](topping)
-
-
-# PIZZA SIZE
 - intent: choose_pizza_size
   examples: |
     - mình muốn chọn size [lớn](pizza_size)
     - cho lấy cỡ [vừa](pizza_size)
-
 - intent: ask_pizza_size
   examples: |
     - cửa hàng có thể cho mình size của pizza được không vậy ?
@@ -187,9 +146,6 @@ nlu:
     - chị ơi cho em xem size pizza ?
     - size của pizza có những loại nào ?
     - pizza có những kích cỡ như thế nào vậy ạ ?
-
-
-# DRINK
 - intent: choose_drink
   examples: |
     - cho mình lấy [COCA COLA](drink)
@@ -200,20 +156,22 @@ nlu:
     - drink
     - cho xem đồ uống
     - cho hỏi có những loại đồ uống nào ?
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: fill_information
   examples: |
     - info
     - infor
     - in4
-
+    - information
+    - điền info
+    - cho điền info
+    - info khách hàng
+    - customer info
 - intent: review_customer
   examples: |
     - checkin4

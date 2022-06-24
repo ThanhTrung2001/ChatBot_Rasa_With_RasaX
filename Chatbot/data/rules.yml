@@ -12,12 +12,13 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-# - rule: user info taken name
-#   steps:
-#   - intent: user_give_name_info
-#   - action: utter_user_name
+- rule: activate fill customer information form
+- steps:
+  - intent: fill_information
+  - action: customer_info_form
+  - active_loop: customer_info_form
 
-- rule: submit customer info
+- rule: customer review info deny
   condition:
   - active_loop: customer_info_form
   steps:
@@ -26,16 +27,31 @@ rules:
   - slot_was_set: 
     - requested_slot: null
   - action: utter_review
+  - intent: deny
+  - action: action_clear_customer_info
+
+
+- rule: customer review info affirm
+  condition:
+  - active_loop: customer_info_form
+  steps:
+  - action: customer_info_form
+  - active_loop: null
+  - slot_was_set: 
+    - requested_slot: null
+  - action: utter_review
+  - intent: affirm
+  - action: action_submit_customer_info
 
 - rule: view customer info
   steps:
   - intent: review_customer
   - action: utter_review
-
-- rule: show drink 
-  steps:
-  - intent: choose_drink
-  - action: utter_pizza_info
+  
+# - rule: phone number test regex
+#   steps:
+#   - intent: user_give_phone_info
+#   - action: utter_review
 
 # - rule: ask pizza size
 #   steps:

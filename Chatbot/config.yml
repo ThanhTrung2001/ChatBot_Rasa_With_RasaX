@@ -21,15 +21,16 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     # 100
-    epochs: 120 
+    epochs: 125 
     constrain_similarities: true
+    # random_seed: 1
   - name: EntitySynonymMapper
   - name: ResponseSelector
     # 100
-    epochs: 120
+    epochs: 140
     constrain_similarities: true
   - name: FallbackClassifier
-    threshold: 0.3
+    threshold: 0.4
     ambiguity_threshold: 0.1
   - name: RegexEntityExtractor
     case_sensitive: False
@@ -54,9 +55,10 @@ policies:
   - name: MemoizationPolicy
   - name: RulePolicy
   - name: UnexpecTEDIntentPolicy
-    max_history: 15
-    epochs: 150
+    max_history: 25
+    epochs: 140
   - name: TEDPolicy
-    max_history: 15
-    epochs: 150
+    max_history: 25
+    epochs: 140
     constrain_similarities: true
+    # random_seed: 2
