@@ -2,7 +2,7 @@ version: "2.0"
 
 stories:
 
-- story: greet and buy pizza
+- story: greet and buy pizza affirm for topping
   steps:
   - intent: greet
   - action: utter_greet
@@ -15,25 +15,30 @@ stories:
   - action: action_show_pizza_size
   - intent: choose_pizza_size
   - action: utter_ask_if_want_topping
-  - checkpoint: check_asked_if_want_topping
-
-- story: user affirm for topping
-  steps:
-  - checkpoint: check_asked_if_want_topping
   - intent: affirm
   - action: action_show_pizza_toppings
   - intent: choose_topping
   - action: action_show_drink_options
-  - intent: choose_drink
   - action: utter_pizza_info
 
-- story: user deny topping
+- story: greet and buy pizza deny topping
   steps:
-  - checkpoint: check_asked_if_want_topping
+  - intent: greet
+  - action: utter_greet
+  - action: action_show_pizza_types
+  - intent: choose_pizza_type
+  - action: action_show_pizza_from_type
+  - intent: choose_pizza
+  - action: action_show_pizza_detail
+  - action: action_show_pizza_price
+  - action: action_show_pizza_size
+  - intent: choose_pizza_size
+  - action: utter_ask_if_want_topping
   - intent: deny
   - action: action_show_drink_options
   - intent: choose_drink
   - action: utter_pizza_info
+
   
 - story: user ask for drink
   steps:
@@ -41,27 +46,22 @@ stories:
   - action: action_show_drink_options
 
 
-- story: user ask for check information
+- story: user ask for check information and info are wrong
 - steps:
   - intent: review_customer
   - action: utter_review
-  - checkpoint: user_review_info
-
-
-- story: user ask for check information affirm
-  steps:
-  - checkpoint: user_review_info
+  - intent: deny
+  - action: action_clear_customer_info
+  
+- story: user ask for check information and info are correct
+- steps:
+  - intent: review_customer
+  - action: utter_review
   - intent: affirm
   - action: action_submit_customer_info
 
-- story: user ask for check information deny
-  steps:
-  - checkpoint: user_review_info
-  - intent: deny
-  - action: action_clear_customer_info
-
 - story: ask user information 
-  steps:
+  steps: 
   - intent: fill_information
   - action: customer_info_form
   - active_loop: customer_info_form
@@ -74,6 +74,3 @@ stories:
   - action: utter_ask_customer_phonenumber
   - slot_was_set: 
     - requested_slot: customer_phone
-  - checkpoint: user_review_info
-
-  

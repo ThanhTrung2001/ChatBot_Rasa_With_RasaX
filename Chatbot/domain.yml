@@ -41,6 +41,8 @@ intents:
     use_entities: true
 - review_customer:
     use_entities: true
+- nlu_fallback:
+    use_entities: true
 entities:
 - address
 - customer_address
@@ -129,11 +131,12 @@ responses:
   - text: bạn có thể thêm topping cho pizza của mình đấy bạn có muốn thêm không ?
   utter_pizza_info:
   - text: |-
-      loại pizza {pizza_type} 
-      pizza: {pizza}
-      kích cỡ: {pizza_size} 
-      topping: {topping} 
-      đồ uống: {drink}
+      Đon hàng:
+      Loại pizza: {pizza_type} 
+      Tên pizza: {pizza}
+      Kích cỡ: {pizza_size} 
+      Topping: {topping} 
+      Đồ uống: {drink}
   utter_pizza_size:
   - text: pizza size {pizza_size}
   utter_ask_customer_name:
@@ -155,6 +158,8 @@ responses:
       Tên: {customer_name}
       Số điện thoại: {customer_phone}
       Địa chỉ: {customer_address} 
+  utter_please_rephrase:
+  - text: Bạn có thể nhắn lại được không mình không hiểu cho lắm.
 actions:
 - action_customer_name_in_form
 - action_customer_phone_in_form
@@ -179,6 +184,11 @@ forms:
     - user_give_name_info
     - user_give_address_info
     - user_give_phone_info
+    - action_show_drink_options
+    - action_show_pizza_detail
+    - action_show_pizza_price
+    - action_show_pizza_from_type
+    - action_show_pizza_toppings
     required_slots:
       customer_address:
       - entity: customer_address

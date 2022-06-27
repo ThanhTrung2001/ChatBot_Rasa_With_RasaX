@@ -21,7 +21,7 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     # 100
-    epochs: 125 
+    epochs: 140
     constrain_similarities: true
     # random_seed: 1
   - name: EntitySynonymMapper
@@ -30,7 +30,7 @@ pipeline:
     epochs: 140
     constrain_similarities: true
   - name: FallbackClassifier
-    threshold: 0.4
+    threshold: 0.3
     ambiguity_threshold: 0.1
   - name: RegexEntityExtractor
     case_sensitive: False

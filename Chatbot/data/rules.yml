@@ -30,7 +30,6 @@ rules:
   - intent: deny
   - action: action_clear_customer_info
 
-
 - rule: customer review info affirm
   condition:
   - active_loop: customer_info_form
@@ -42,12 +41,24 @@ rules:
   - action: utter_review
   - intent: affirm
   - action: action_submit_customer_info
+  - action: action_restart
 
 - rule: view customer info
   steps:
   - intent: review_customer
   - action: utter_review
   
+- rule: show menu
+  steps:
+  - intent: get_pizza_menu
+  - action: action_show_pizza_types
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+
+
 # - rule: phone number test regex
 #   steps:
 #   - intent: user_give_phone_info

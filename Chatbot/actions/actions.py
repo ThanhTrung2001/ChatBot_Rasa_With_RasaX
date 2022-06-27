@@ -74,7 +74,7 @@ class ActionShowPizzaDetail(Action):
                             dispatcher.utter_message(text='Mô tả: {}'.format(p['description']), image='{}'.format(p['image']))
                             return[]
 
-class ActionShowPizzaPriccel(Action):
+class ActionShowPizzaPrice(Action):
     def name(self) -> Text:
         return "action_show_pizza_price"
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
@@ -198,9 +198,7 @@ class ActionGetCustomerAddress(Action):
     def name(self) -> Text:
         return "action_get_customer_address"
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-
-        SlotSet("customer_address", tracker.latest_message) 
-        return []
+        return [SlotSet("customer_address", tracker.latest_message) ]
 class ActionGetName(Action):
     """Processes Delivery Form"""
 
@@ -321,10 +319,5 @@ class ActionClearAllCustomerInfo(Action):
         return "action_clear_customer_info"
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
         dispatcher.utter_message(text="xóa thông tin cũ của khách hàng ...")
-        SlotSet("customer_name",None)
-        SlotSet("customer_phone",None)
-        SlotSet("customer_address",None)
-        SlotSet("redo_form",True)
-
-        return []
-
+    
+        return [ SlotSet("customer_phone",None), SlotSet("customer_name",None), SlotSet("customer_address",None), SlotSet("redo_form",True)]
