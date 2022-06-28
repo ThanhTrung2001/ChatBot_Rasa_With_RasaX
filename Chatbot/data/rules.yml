@@ -29,6 +29,9 @@ rules:
   - action: utter_review
   - intent: deny
   - action: action_clear_customer_info
+  - action: action_clear_customer_name
+  - action: action_clear_customer_address
+  - action: action_clear_customer_phone
 
 - rule: customer review info affirm
   condition:

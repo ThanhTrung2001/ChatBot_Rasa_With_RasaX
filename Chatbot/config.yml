@@ -29,9 +29,9 @@ pipeline:
     # 100
     epochs: 140
     constrain_similarities: true
-  - name: FallbackClassifier
-    threshold: 0.3
-    ambiguity_threshold: 0.1
+  # - name: FallbackClassifier
+  #   threshold: 0.3
+  #   ambiguity_threshold: 0.1
   - name: RegexEntityExtractor
     case_sensitive: False
     use_lookup_tables: True
@@ -54,11 +54,11 @@ policies:
 #     constrain_similarities: true
   - name: MemoizationPolicy
   - name: RulePolicy
-  - name: UnexpecTEDIntentPolicy
-    max_history: 25
-    epochs: 140
+  # - name: UnexpecTEDIntentPolicy
+  #   max_history: 30
+  #   epochs: 140
   - name: TEDPolicy
-    max_history: 25
+    max_history: 30
     epochs: 140
     constrain_similarities: true
     # random_seed: 2

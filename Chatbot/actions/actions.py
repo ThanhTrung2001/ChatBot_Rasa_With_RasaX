@@ -311,13 +311,32 @@ class ActionSubmitCustomerInfo(Action):
     def name(self) -> Text:
         return "action_submit_customer_info"
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        dispatcher.utter_message('cảm ơn bạn đã gửi thông tin cho cửa hàng')
-        dispatcher.utter_message('mình sẽ gửi đơn hàng của bạn đến cửa hàng pizza RCB gần nhất!!')
+        dispatcher.utter_message('Cảm ơn bạn đã gửi thông tin cho cửa hàng\nMình sẽ gửi đơn hàng của bạn đến cửa hàng pizza RCB gần nhất!!')
         return []
 class ActionClearAllCustomerInfo(Action):
     def name(self) -> Text:
         return "action_clear_customer_info"
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(text="xóa thông tin cũ của khách hàng ...")
-    
-        return [ SlotSet("customer_phone",None), SlotSet("customer_name",None), SlotSet("customer_address",None), SlotSet("redo_form",True)]
+        dispatcher.utter_message(text="Xóa thông tin cũ của khách hàng...")
+        # return [ 
+        #     SlotSet("customer_phone", None), 
+        #     SlotSet("customer_name", None), 
+        #     SlotSet("customer_address", None), 
+        #     SlotSet("redo_form", True)
+        #     ]
+        return[]
+class ActionClearCustomerName(Action):
+    def name(self) -> Text:
+        return "action_clear_customer_name"
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        return [SlotSet("customer_name", None)]
+class ActionClearCustomerPhone(Action):
+    def name(self) -> Text:
+        return "action_clear_customer_phone"
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        return [SlotSet("customer_phone", None)]
+class ActionClearCustomerAddress(Action):
+    def name(self) -> Text:
+        return "action_clear_customer_address"
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        return [SlotSet("customer_address", None)]

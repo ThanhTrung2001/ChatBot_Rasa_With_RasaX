@@ -113,6 +113,7 @@ nlu:
     - chọn loại pizza (ăn chay)[pizza_type]
     - /choose_pizza_type{"pizza_type": "hải sản"}
     - phú nhuận 2
+    - 123 a
 - intent: choose_pizza
   examples: |
     - Mình chọn pizza này [pizza bò hải sản](pizza)

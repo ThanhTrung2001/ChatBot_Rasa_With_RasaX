@@ -1,8 +1,7 @@
 version: "2.0"
 
 stories:
-
-- story: greet and buy pizza affirm for topping
+- story: greet and buy pizza topping affirm drink affirm
   steps:
   - intent: greet
   - action: utter_greet
@@ -18,10 +17,31 @@ stories:
   - intent: affirm
   - action: action_show_pizza_toppings
   - intent: choose_topping
+  - action: utter_ask_if_want_drink
+  - intent: affirm
   - action: action_show_drink_options
+  - intent: choose_drink
   - action: utter_pizza_info
-
-- story: greet and buy pizza deny topping
+- story: greet and buy pizza topping affirm drink deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_show_pizza_types
+  - intent: choose_pizza_type
+  - action: action_show_pizza_from_type
+  - intent: choose_pizza
+  - action: action_show_pizza_detail
+  - action: action_show_pizza_price
+  - action: action_show_pizza_size
+  - intent: choose_pizza_size
+  - action: utter_ask_if_want_topping
+  - intent: affirm
+  - action: action_show_pizza_toppings
+  - intent: choose_topping
+  - action: utter_ask_if_want_drink
+  - intent: deny
+  - action: utter_pizza_info
+- story: greet and buy pizza topping deny drink affirm
   steps:
   - intent: greet
   - action: utter_greet
@@ -35,31 +55,40 @@ stories:
   - intent: choose_pizza_size
   - action: utter_ask_if_want_topping
   - intent: deny
+  - action: utter_ask_if_want_drink
+  - intent: affirm
   - action: action_show_drink_options
   - intent: choose_drink
   - action: utter_pizza_info
-
-  
-- story: user ask for drink
+- story: greet and buy pizza topping deny drink deny
   steps:
-  - intent: ask_for_drink
-  - action: action_show_drink_options
-
-
+  - intent: greet
+  - action: utter_greet
+  - action: action_show_pizza_types
+  - intent: choose_pizza_type
+  - action: action_show_pizza_from_type
+  - intent: choose_pizza
+  - action: action_show_pizza_detail
+  - action: action_show_pizza_price
+  - action: action_show_pizza_size
+  - intent: choose_pizza_size
+  - action: utter_ask_if_want_topping
+  - intent: deny
+  - action: utter_ask_if_want_drink
+  - intent: deny
+  - action: utter_pizza_info
 - story: user ask for check information and info are wrong
 - steps:
   - intent: review_customer
   - action: utter_review
   - intent: deny
   - action: action_clear_customer_info
-  
 - story: user ask for check information and info are correct
 - steps:
   - intent: review_customer
   - action: utter_review
   - intent: affirm
   - action: action_submit_customer_info
-
 - story: ask user information 
   steps: 
   - intent: fill_information

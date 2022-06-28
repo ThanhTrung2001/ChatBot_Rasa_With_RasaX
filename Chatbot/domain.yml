@@ -127,11 +127,34 @@ responses:
   utter_pizza:
   - text: pizza bạn đã chọn là {pizza}
   utter_ask_if_want_topping:
-  - text: bạn có muốn thêm topping cho pizza của mình không ?
-  - text: bạn có thể thêm topping cho pizza của mình đấy bạn có muốn thêm không ?
+  - buttons:
+    - payload: /affirm
+      title: Có
+    - payload: /deny
+      title: Không
+    text: bạn có muốn thêm topping cho pizza của mình không ?
+  - buttons:
+    - payload: /affirm
+      title: Có
+    - payload: /deny
+      title: Không
+    text: bạn có thể thêm topping cho pizza của mình đấy bạn có muốn thêm không ?
+  utter_ask_if_want_drink:
+  - buttons:
+    - payload: /affirm
+      title: Có
+    - payload: /deny
+      title: Không
+    text: bạn có muốn thêm đồ uống đi kèm với pizza của mình không ?
+  - buttons:
+    - payload: /affirm
+      title: Có
+    - payload: /deny
+      title: Không
+    text: bạn có thể thêm đồ uống đi kèm với pizza của mình đấy bạn có muốn thêm không ?
   utter_pizza_info:
   - text: |-
-      Đon hàng:
+      Đơn hàng:
       Loại pizza: {pizza_type} 
       Tên pizza: {pizza}
       Kích cỡ: {pizza_size} 
@@ -178,6 +201,9 @@ actions:
 - utter_ask_customer_phonenumber
 - utter_review
 - validate_customer_info_form
+- action_clear_customer_name
+- action_clear_customer_phone
+- action_clear_customer_address
 forms:
   customer_info_form:
     ignored_intents:
