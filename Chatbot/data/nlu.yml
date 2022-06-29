@@ -169,11 +169,34 @@ nlu:
     - infor
     - in4
     - information
-    - điền info
-    - cho điền info
+    - điền thông tin
+    - cho điền thông tin
     - info khách hàng
     - customer info
+    - cho mình điền thông tin
+    - cho mình điền in4
+    - cho mình điền infor
 - intent: review_customer
   examples: |
     - checkin4
     - checkinfo
+- intent: ask_about_us
+  examples: |
+    - about us
+    - về cửa hàng của bạn
+    - thông tin về cửa hàng
+- intent: ask_about_CSGH
+  examples: |
+    - giao hàng
+    - CSGH
+    - chính sách giao hàng
+    - về giao hàng
+- intent: stop_right_there
+  examples: |
+    - đủ thông tin rồi
+    - mình có đủ thông tin rồi
+- intent: want_to_know_more
+  examples: |
+    - thắc mắc
+    - cho mình hỏi thêm
+    - confuse

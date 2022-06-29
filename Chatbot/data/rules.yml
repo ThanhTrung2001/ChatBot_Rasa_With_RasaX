@@ -61,6 +61,27 @@ rules:
   - intent: nlu_fallback
   - action: utter_please_rephrase
 
+- rule: ask about us information
+  steps: 
+  - intent: ask_about_us
+  - action: utter_about_us
+  - action: utter_something_else
+
+- rule: ask cbout CSGH information
+  steps:
+  - intent: ask_about_CSGH
+  - action: utter_delivery
+  - action: utter_something_else
+
+- rule: end of conversation after all
+  steps:
+  - intent: stop_right_there
+  - action: utter_thankyou
+
+- rule: user ask for more information
+  steps:
+  - intent: want_to_know_more
+  - action: utter_something_else
 
 # - rule: phone number test regex
 #   steps:

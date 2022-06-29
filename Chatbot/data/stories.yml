@@ -22,6 +22,7 @@ stories:
   - action: action_show_drink_options
   - intent: choose_drink
   - action: utter_pizza_info
+  - action: utter_ask_customer_information
 - story: greet and buy pizza topping affirm drink deny
   steps:
   - intent: greet
@@ -41,6 +42,7 @@ stories:
   - action: utter_ask_if_want_drink
   - intent: deny
   - action: utter_pizza_info
+  - action: utter_ask_customer_information
 - story: greet and buy pizza topping deny drink affirm
   steps:
   - intent: greet
@@ -60,6 +62,7 @@ stories:
   - action: action_show_drink_options
   - intent: choose_drink
   - action: utter_pizza_info
+  - action: utter_ask_customer_information
 - story: greet and buy pizza topping deny drink deny
   steps:
   - intent: greet
@@ -77,6 +80,7 @@ stories:
   - action: utter_ask_if_want_drink
   - intent: deny
   - action: utter_pizza_info
+  - action: utter_ask_customer_information
 - story: user ask for check information and info are wrong
 - steps:
   - intent: review_customer
